@@ -55,12 +55,18 @@ public class MovieDatabaseBuilder {
 
     }
 
+    //mistake
     public static void makeActorDataFile(ArrayList<SimpleMovie> movies, String fileName) {
         HashMap<String, String> actorMovies = new HashMap<String, String>();
         try {
             File actorData = new File(fileName);
             Scanner reader = new Scanner(actorData);
+            int count = 0;
             while (reader.hasNextLine()) {
+                if (count % 500 == 0) {
+                    System.out.println("on " + count);
+                }
+                count++;
                 String actor = reader.nextLine();
                 String actorMovie = "---";
                 for (SimpleMovie movie: movies) {

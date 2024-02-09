@@ -27,4 +27,8 @@ public class SimpleMovie {
     public String toString() {
         return "Title: " + title + "\n" + "Actors: " + actors + "\n";
     }
+
+    public int compareTo() {
+
+    }
 }
