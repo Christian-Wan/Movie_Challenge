@@ -29,6 +29,25 @@ public class MovieDatabaseBuilder {
 
     }
 
+    public static HashMap<String, Integer> actorsMap() {
+        HashMap<String, Integer> actors = new HashMap<String, Integer>();
+        try {
+            File movieData = new File("src/actors_movie3");
+            Scanner reader = new Scanner(movieData);
+            while (reader.hasNextLine()) {
+                String line = reader.nextLine();
+                String[] data = line.split("!@#");
+                actors.put(data[0], Integer.parseInt(data[1]));
+
+            }
+        }
+        catch (FileNotFoundException noFile) {
+            System.out.println("File not found!a");
+            return null;
+        }
+        return actors;
+    }
+
     public static void makeActorFile(ArrayList<SimpleMovie> movies) {
         TreeSet<String> actors = new TreeSet<String>();
         for (SimpleMovie movie: movies) {
@@ -55,13 +74,18 @@ public class MovieDatabaseBuilder {
     //mistake
     public static void makeActorDataFile(ArrayList<SimpleMovie> movies, String fileName) throws IOException {
         int number = 0;
-        File f = new File("src/actors_movie3");
-        f.createNewFile();
-        FileWriter fw = new FileWriter(f);
+//        File f = new File("src/actors_movie4");
+//        f.createNewFile();
+//        FileWriter fw = new FileWriter(f);
         try {
             File actorData = new File(fileName);
             Scanner reader = new Scanner(actorData);
             int count = 0;
+            while (reader.hasNextLine()) {
+                if (reader.nextLine().isEmpty()) {
+                    break;
+                }
+            }
             while (reader.hasNextLine()) {
                 number = 0;
                 if (count % 500 == 0) {
@@ -75,7 +99,8 @@ public class MovieDatabaseBuilder {
                         number++;
                     }
                 }
-                fw.write(actor + " " + number + "\n");
+                System.out.println(actor + "!@#" + number);
+//                fw.write(actor + "!@#" + number + "\n");
             }
         }
         catch (FileNotFoundException noFile) {
