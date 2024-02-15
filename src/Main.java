@@ -12,12 +12,14 @@ public class Main {
         Scanner fileScan = new Scanner(f);
         ArrayList<SimpleMovie> movies = MovieDatabaseBuilder.getMovieDB("src/movie_data");
         HashMap<String, Integer> allActors = MovieDatabaseBuilder.actorsMap();
+        FindBacon fb = new FindBacon();
 //        for (SimpleMovie movie : movies) {
 //            System.out.println(movie);
 //        }
 //        System.out.println("Number of movies: " + movies.size());
 
         while (true) {
+            fb.setFound(false);
             System.out.println("Enter an actor's name or (q) to quit");
             String name = s.nextLine().toLowerCase();
             if (name.equals("q")) {
@@ -38,7 +40,7 @@ public class Main {
             choice = names.get(Integer.parseInt(choice) - 1);
             ArrayList<String> starter = new ArrayList<String>();
             starter.add(choice);
-            System.out.println(FindBacon.bruteForce(choice, movies, allActors, 0, choice, new ArrayList<SimpleMovie>(), starter));
+            System.out.println(fb.bruteForce(choice, movies, allActors, 0, choice, new ArrayList<SimpleMovie>(), starter));
         }
     }
 }
