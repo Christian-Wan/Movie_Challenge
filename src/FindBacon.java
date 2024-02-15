@@ -38,7 +38,7 @@ public class FindBacon {
             Collections.sort(moviesIn);
 
 
-            if (level < 6) {
+            if (true) {
 //            System.out.println("hello");
                 for (SimpleMovie movie : moviesIn) {
 //                System.out.println(movie.getTitle());

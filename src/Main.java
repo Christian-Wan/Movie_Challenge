@@ -26,10 +26,9 @@ public class Main {
                 break;
             }
             ArrayList<String> names = new ArrayList<>();
-            while (fileScan.hasNext()) {
-                String line = fileScan.nextLine();
-                if (line.toLowerCase().contains(name)) {
-                    names.add(line);
+            for (String act: allActors.keySet()) {
+                if (act.toLowerCase().contains(name)) {
+                    names.add(act);
                 }
             }
             for (int i = 0; i < names.size(); i++) {
